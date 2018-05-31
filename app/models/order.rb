@@ -1,4 +1,4 @@
 class Order < ApplicationRecord
-  has_one :ticket
-  has_one :product
+  belongs_to :ticket
+  belongs_to :product
 end
