@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_ticket: 2018-05-31
+  total: 1.5
+  user_id: 1
+
+two:
+  date_ticket: 2018-05-31
+  total: 1.5
+  user_id: 1
