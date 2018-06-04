@@ -10,6 +10,7 @@ class Ticket < ApplicationRecord
     self.total = total_acum
     self.save
     p self.total
+    print_ticketx
   end
 
   def print_ticketx
@@ -28,7 +29,13 @@ class Ticket < ApplicationRecord
       concept_product = "#{order.product.concept}"
       price_unit = "#{order.product.price}"
       total_order = "#{order.total}"
+      if order.total == nil or 0
+        calculate_total_order
+      end
       p "Order number: #{order_number} || Quantity product: #{quantity_product} || Concept: #{concept_product} || Price unit: #{price_unit} || Total order: #{total_order}"
+    end
+    if self.total == nil
+      calculate_and_save_total
     end
     p "Total ticket: #{self.total}"
     self.updated_at = Time.now
@@ -36,3 +43,4 @@ class Ticket < ApplicationRecord
     p self.updated_at
   end
 end
+#
