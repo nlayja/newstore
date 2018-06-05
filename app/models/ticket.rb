@@ -27,16 +27,11 @@ class Ticket < ApplicationRecord
       quantity_product = "#{order.quantity}"
       concept_product = "#{order.product.concept}"
       price_unit = "#{order.product.price}"
-      total_order = "#{order.total}"
-      if order.total == nil or 0
-        order.calculate_total_order
-        total_order = "#{order.total}"
-      end
-      p "Order number: #{order_number} || Quantity product: #{quantity_product} || Concept: #{concept_product} || Price unit: #{price_unit} || Total order: #{total_order}"
+      order.calculate_total_order if (order.total.nil? || 0)
+      p "Order number: #{order_number} || Quantity product: #{quantity_product} || Concept: #{concept_product} || Price unit: #{price_unit} || Total order: #{order.total}"
     end
-    if self.total == nil or 0
-      self.calculate_and_save_total
-    end
+    self.calculate_and_save_total if self.total.nil? || 0
+
     p "Total ticket: #{self.total}"
     self.updated_at = Time.now
     self.save
