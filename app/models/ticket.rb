@@ -23,12 +23,10 @@ class Ticket < ApplicationRecord
     price_unit = 0
     #self.updated_at = " "
     self.orders.each do |order|
-      order_number = "#{order.id}"
-      quantity_product = "#{order.quantity}"
       concept_product = "#{order.product.concept}"
       price_unit = "#{order.product.price}"
       order.calculate_total_order if (order.total.nil? || 0)
-      p "Order number: #{order_number} || Quantity product: #{quantity_product} || Concept: #{concept_product} || Price unit: #{price_unit} || Total order: #{order.total}"
+      p "Order number: #{order.id} || Quantity product: #{order.quantity} || Concept: #{concept_product} || Price unit: #{price_unit} || Total order: #{order.total}"
     end
     self.calculate_and_save_total if self.total.nil? || 0
 
