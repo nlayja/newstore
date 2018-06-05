@@ -7,6 +7,5 @@ class Order < ApplicationRecord
     total_order = self.quantity * self.product.price
     self.total = total_order
     self.save
-    #p self.total
   end
 end
